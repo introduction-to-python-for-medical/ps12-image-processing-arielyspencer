@@ -3,16 +3,9 @@ import numpy as np
 from scipy.signal import convolve2d
 
 def load_image(image_path):
-    try:
-        img = Image.open(image_path)
-        img_array = np.array(img)
-        return img_array
-    except FileNotFoundError:
-        print(f"Error: Image file not found at {image_path}")
-        return None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+    image = Image.open(image_path)
+    image_array = np.array(image)
+    return image_array
 
 def edge_detection(image_array):
     grayscale_image = np.mean(image_array, axis=2).astype(np.uint8)
